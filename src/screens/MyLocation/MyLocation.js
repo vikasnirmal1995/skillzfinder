@@ -15,6 +15,9 @@ import styles from "./styles";
 import CloseIcon from "../../assets/Images/icons/cancel.png";
 import { GETSKILLERDATA } from "../../config/urls";
 import { makeReq } from "../../utils.js/makeReq";
+import BingMapsView from "react-native-bing-maps";
+
+import MapMarker from "../../assets/Images/icons/marker.png";
 
 const topDrawerStyle = {
   position: "absolute",
@@ -139,10 +142,31 @@ const MyLocation = ({ navigation }) => {
         </View>
 
         <View style={styles.bodysection}>
-          <Image
-            source={require("../../assets/Images/mapone.jpg")}
-            style={{ width: "100%", height: 220 }}
-          />
+          <View style={styles.mapWrapper}>
+            <View style={styles.mapContainer}>
+              <BingMapsView
+                credentialsKey="AttU8jIa7QFCfA5S70Nj5iFTPR1eklgdDl8lnG07gxWjpgxSrZrmxrulETbVWWdE"
+                mapLocation={{
+                  lat: 26.8505,
+                  long: 75.7628,
+                  zoom: 15,
+                }}
+                MapPin={{
+                  lat: 26.8505,
+                  long: 75.7628,
+                  icon: "https://skillztrader.com/images/logo.png",
+                }}
+                style={styles.mapbox}
+                buildingsVisible={true}
+                businessLandmarksVisible={true}
+                compassButtonVisible={true}
+                transitFeaturesVisible={true}
+                tiltButtonVisible={true}
+                zoomButtonsVisible={true}
+                copyrightDisplay="allowHiding"
+              />
+            </View>
+          </View>
           <View style={styles.middelsection}>
             <View style={styles.btnrow}>
               <View style={styles.locationbtn}>
