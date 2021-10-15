@@ -1,8 +1,6 @@
 apply plugin: "com.android.application"
 apply from: 'secrets.gradle'  //added for bing maps
-buildTypes.each {
-        it.buildConfigField "String", "AttU8jIa7QFCfA5S70Nj5iFTPR1eklgdDl8lnG07gxWjpgxSrZrmxrulETbVWWdE", "\"$credentialsKey\""
-    }
+
 
 import com.android.build.OutputFile
 
@@ -140,6 +138,9 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+    }
+    buildTypes.each {
+        it.buildConfigField "String", "AttU8jIa7QFCfA5S70Nj5iFTPR1eklgdDl8lnG07gxWjpgxSrZrmxrulETbVWWdE", "\"$credentialsKey\""
     }
     signingConfigs {
         release {
