@@ -5,7 +5,7 @@ export async function apiReq(
   endPoint,
   data,
   method,
-  headers,
+  headers = {},
   requestOptions = {}
 ) {
   return new Promise(async (res, rej) => {
@@ -16,18 +16,19 @@ export async function apiReq(
         headers,
       };
     }
+    console.log(data);
     axios[method](endPoint, data, { headers })
       .then((result) => {
         const { data } = result;
 
-        if (data.status === false) {
+        if (data.status === 0) {
           return rej(data);
         }
 
         return res(data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         console.log(error && error.response, "the error respne");
         if (error && error.response && error.response.status === 401) {
         }
@@ -47,5 +48,5 @@ export async function apiReq(
 }
 
 export function makeReq(endPoint, data, headers = {}, requestOptions) {
-  return apiReq(endPoint, data, "get", headers, requestOptions);
+  return apiReq(endPoint, data, "post", headers, requestOptions);
 }
