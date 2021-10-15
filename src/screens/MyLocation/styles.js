@@ -144,6 +144,18 @@ const styles = StyleSheet.create({
   faltlist: {
     maxHeight: height - 320,
   },
+  mapContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  mapbox: {
+    height: height * 0.4,
+    width: width,
+  },
+  mapWrapper: {
+    height: height * 0.4,
+  },
 });
 
 export default styles;

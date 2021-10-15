@@ -5495,6 +5495,11 @@ react-native-background-color@^0.0.8:
   resolved "https://registry.yarnpkg.com/react-native-background-color/-/react-native-background-color-0.0.8.tgz#661f737156a18a86ece362126e9c97e33fa42ed2"
   integrity sha512-Or89KCBNyFsD0234g/MgWyRrhwtd5egHXdqUwal1e5FKpum8d/x1y5PQqF3OUFR0W/ztp5Vt3FaLc/LEY0Fy+Q==
 
+react-native-bing-maps@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-bing-maps/-/react-native-bing-maps-0.1.1.tgz#86c9ee2c4f54035680c8f419659936cfd87949fa"
+  integrity sha512-SJB0feJ068ugC/ALQdPkogptIfP/Fdm8XF1ebnUOfjc3RDDbwm+NY9P6MyRBxjWZi2ae7RjCe2q5cENIOWgsOQ==
+
 react-native-codegen@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.0.6.tgz#b3173faa879cf71bfade8d030f9c4698388f6909"
