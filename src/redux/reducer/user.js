@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   user: null,
+  location: null,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -8,6 +9,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state, //... operator is used to keep all the data saved and only the updated value will change
         user: action.payload,
+      };
+    case "UPDATE_USER_LOCATION":
+      return {
+        ...state,
+        location: action.payload,
       };
 
     default:

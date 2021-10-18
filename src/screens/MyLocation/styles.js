@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   bodysection: {
-    height: hp("73%"),
-    alignItems: "center",
+    // height: hp("73%"),
+    // alignItems: "center",
   },
   middelsection: {
     width: wp("90%"),
@@ -144,17 +144,29 @@ const styles = StyleSheet.create({
   faltlist: {
     maxHeight: height - 320,
   },
-  mapContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  // mapContainer: {
+  //   flex: 1,
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // },
   mapbox: {
     height: height * 0.4,
     width: width,
   },
   mapWrapper: {
     height: height * 0.4,
+  },
+
+  mapContainer: {
+    ...StyleSheet.absoluteFillObject,
+    height: height * 0.4,
+    width: width,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    position: "relative",
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 });
 

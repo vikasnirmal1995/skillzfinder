@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { KeyboardAvoidingView, Platform, Alert } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import Geolocation from "@react-native-community/geolocation";
+import { userLocationUpdate } from "./src/redux/actions/user";
 
 import Splash from "./src/screens/Splash/Splash";
 import { DrawerContent } from "./src/compontents/DrawerContent";
@@ -88,7 +90,7 @@ function App() {
     try {
       const value = await AsyncStorage.getItem("skilzUser");
       if (value !== null) {
-        dispatch(userData(value));
+        dispatch(userData(JSON.parse(value)));
         console.log("data mil gaya,", JSON.parse(value));
         setIsLoading(false);
       } else {
@@ -100,10 +102,25 @@ function App() {
     }
   };
   useEffect(() => {
+    Geolocation.getCurrentPosition(
+      (position) => {
+        const initialPosition = JSON.stringify(position);
+        // this.setState({initialPosition});
+        dispatch(userLocationUpdate(position.coords));
+        console.log("initialPosition ?????", position);
+      },
+      (error) => Alert.alert("Error", JSON.stringify(error)),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+
     getData();
     // AsyncStorage.clear();
     // setIsLoading(false);
   }, []);
+
+  const locationUser = useSelector((state) => state.user);
+
+  console.log("user location>>>>", locationUser);
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>

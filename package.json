@@ -13,6 +13,7 @@
     "@react-native-async-storage/async-storage": "^1.15.9",
     "@react-native-community/cli": "^5.0.1",
     "@react-native-community/clipboard": "^1.5.1",
+    "@react-native-community/geolocation": "^2.0.2",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-picker/picker": "^2.0.0",
     "@react-navigation/drawer": "^5.12.9",

@@ -5,3 +5,10 @@ export const userData = (data) => {
     payload: data,
   };
 };
+export const userLocationUpdate = (data) => {
+  //   console.log("abhi>>>", data);
+  return {
+    type: "UPDATE_USER_LOCATION",
+    payload: data,
+  };
+};
