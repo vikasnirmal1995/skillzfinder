@@ -74,6 +74,22 @@ const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
   },
+  myPointer: {
+    backgroundColor: "rgba(0, 153, 255, 1)",
+    width: 20,
+    height: 20,
+    borderRadius: 20 / 2,
+    borderWidth: 3,
+    borderColor: "rgba(255, 255, 255, 1)",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
 });
 
 export default styles;

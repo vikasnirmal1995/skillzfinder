@@ -73,6 +73,15 @@ const Mapview = ({ navigation }) => {
                   strokeColor={"transparent"}
                   fillColor={"rgba(0,153,255,0.3)"}
                 ></MapView.Circle>
+                <Marker
+                  coordinate={{
+                    latitude: -25.798484,
+                    longitude: 28.331165,
+                  }}
+                  title={"My Location"}
+                >
+                  <View style={styles.myPointer}></View>
+                </Marker>
                 {getSkillersData.length > 0 && (
                   <>
                     {getSkillersData.map((item, index) => (

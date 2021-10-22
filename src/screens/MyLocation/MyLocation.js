@@ -36,7 +36,7 @@ const MyLocation = ({ navigation }) => {
   const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [selected, setSelected] = useState("");
-  const searchInputRef = useRef(null);
+  const searchInputRef = useRef("");
 
   const locationUser = useSelector((state) => state.user);
   console.log("User data redux-->", locationUser.location);
@@ -210,8 +210,6 @@ const MyLocation = ({ navigation }) => {
             <TouchableOpacity
               onPress={() => {
                 setModalVisible(true);
-                // console.log("searchInputRef", searchInputRef);
-                // searchInputRef.current.foucs();
               }}
               style={styles.searchsection}
             >
