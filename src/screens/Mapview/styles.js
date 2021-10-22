@@ -56,16 +56,16 @@ const styles = StyleSheet.create({
   },
 
   mapbox: {
-    height: height * 0.7,
+    height: height * 0.8,
     width: width,
   },
   mapWrapper: {
-    height: height * 0.7,
+    height: height * 0.8,
   },
 
   mapContainer: {
     ...StyleSheet.absoluteFillObject,
-    height: height * 0.7,
+    height: height * 0.8,
     width: width,
     justifyContent: "flex-end",
     alignItems: "center",
