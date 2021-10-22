@@ -14,9 +14,13 @@ import {
 import styles from "./styles";
 import CloseIcon from "../../assets/Images/icons/cancel.png";
 import { GETSKILLERDATA } from "../../config/urls";
+import { SEARCHSKILLERS } from "../../config/urls";
 import { makeReq } from "../../utils.js/makeReq";
 // import BingMapsView from "react-native-bing-maps";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
+
+import { useSelector, useDispatch } from "react-redux";
+import { userSearchedSkillers } from "../../redux/actions/user";
 
 import MapMarker from "../../assets/Images/icons/marker.svg";
 
@@ -32,9 +36,31 @@ const MyLocation = ({ navigation }) => {
   const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [selected, setSelected] = useState("");
-  const mapRef = useRef();
+  const searchInputRef = useRef(null);
 
-  console.log("mapRef>>>>>>>", mapRef.current);
+  const locationUser = useSelector((state) => state.user);
+  console.log("User data redux-->", locationUser.location);
+  const dispatch = useDispatch();
+
+  const getAllSkillers = () => {
+    if (selected !== "") {
+      const options = {
+        skills: selected,
+        latitude: "-25.798484",
+        longitude: "28.331165",
+        distance: "300",
+      };
+      makeReq(SEARCHSKILLERS, options).then((res) => {
+        console.log(res);
+        if (res.status === 1) {
+          dispatch(userSearchedSkillers(res.data));
+          navigation.navigate("Listview");
+        }
+      });
+    } else {
+      alert("Please select skill to search");
+    }
+  };
 
   const handleSearch = (value) => {
     setSearch(value);
@@ -110,6 +136,7 @@ const MyLocation = ({ navigation }) => {
                 style={styles.searchInput}
                 value={search}
                 onChangeText={(value) => handleSearch(value)}
+                ref={searchInputRef}
               />
             </View>
             {searchData.length > 0 && (
@@ -181,7 +208,11 @@ const MyLocation = ({ navigation }) => {
               </View> */}
             </View>
             <TouchableOpacity
-              onPress={() => setModalVisible(true)}
+              onPress={() => {
+                setModalVisible(true);
+                // console.log("searchInputRef", searchInputRef);
+                // searchInputRef.current.foucs();
+              }}
               style={styles.searchsection}
             >
               <Image
@@ -197,7 +228,7 @@ const MyLocation = ({ navigation }) => {
       </View>
 
       <View style={styles.bottombtun}>
-        <TouchableOpacity onPress={() => navigation.navigate("Listview")}>
+        <TouchableOpacity onPress={() => getAllSkillers()}>
           <Text style={styles.butntext}>Go</Text>
         </TouchableOpacity>
       </View>

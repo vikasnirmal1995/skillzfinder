@@ -12,3 +12,12 @@ export const userLocationUpdate = (data) => {
     payload: data,
   };
 };
+
+//This function is foer finding all the skillers
+
+export const userSearchedSkillers = (data) => {
+  return {
+    type: "GET_ALL_SKILLERS",
+    payload: data,
+  };
+};

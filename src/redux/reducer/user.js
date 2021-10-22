@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   user: null,
   location: null,
+  skillers: [],
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -14,6 +15,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         location: action.payload,
+      };
+
+    case "GET_ALL_SKILLERS":
+      return {
+        ...state,
+        skillers: action.payload,
       };
 
     default:

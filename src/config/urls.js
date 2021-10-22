@@ -6,3 +6,4 @@ export const getApiUrl = (endpoint) => API_BASE_URL + endpoint;
 export const SEND_OTP = getApiUrl("/sendotp");
 export const GETUSERDATA = getApiUrl("/getuserdetails");
 export const GETSKILLERDATA = getApiUrl("/get_skills");
+export const SEARCHSKILLERS = getApiUrl("/search_skillers_geo");
