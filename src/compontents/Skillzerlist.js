@@ -179,7 +179,11 @@ export function Skillzerlist() {
       renderItem={({ item }) => (
         <View>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Profile")}
+            onPress={() =>
+              navigation.navigate("Profile", {
+                skillerData: item,
+              })
+            }
             style={styles.chatcontact}
           >
             <View>
@@ -196,12 +200,17 @@ export function Skillzerlist() {
                 }}
               >
                 <Text style={styles.username}>{item.skiller_name}</Text>
-                <View style={styles.favionFix}>
+                <TouchableOpacity
+                  style={styles.favionFix}
+                  onPress={() => {
+                    alert("Hello");
+                  }}
+                >
                   <Image
                     source={require("../assets/Images/favrouit-bl.png")}
                     style={styles.favicon}
                   />
-                </View>
+                </TouchableOpacity>
               </View>
 
               <View style={styles.captionWrapper}>

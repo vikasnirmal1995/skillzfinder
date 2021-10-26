@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../screens/Profile/styles";
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity, Share } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 
 const ProfileHeader = ({
@@ -11,20 +11,55 @@ const ProfileHeader = ({
 }) => {
   const navigation = useNavigation();
 
+  const userLike = () => {
+    alert("hello");
+  };
+
+  const share = async (value) => {
+    try {
+      const result = await Share.share({
+        message:
+          "React Native | A framework for building native apps using React",
+        url: "www.google.com",
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <View style={styles.profilheader}>
       <View style={styles.topbar}>
         <View style={styles.scrntitle}>
           <Text style={styles.scrntitltext}>Profile</Text>
         </View>
-        <Image
-          source={require("../assets/Images/favrouit.png")}
-          style={styles.favico}
-        />
-        <Image
-          source={require("../assets/Images/share.png")}
+        <TouchableOpacity
+          style={[styles.favico, { marginRight: 20 }]}
+          onPress={() => userLike()}
+        >
+          <Image
+            source={require("../assets/Images/favrouit.png")}
+            style={styles.favico}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => share("Abhi Jhalani")}
           style={styles.sharico}
-        />
+        >
+          <Image
+            source={require("../assets/Images/share.png")}
+            style={styles.sharico}
+          />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.usrname}>
