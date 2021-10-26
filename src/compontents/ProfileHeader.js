@@ -18,9 +18,8 @@ const ProfileHeader = ({
   const share = async (value) => {
     try {
       const result = await Share.share({
-        message:
-          "React Native | A framework for building native apps using React",
-        url: "www.google.com",
+        message: "React Native | https://www.google.com",
+        // url: "d3d3Lmdvb2dsZS5jb20",
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
