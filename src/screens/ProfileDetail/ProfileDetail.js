@@ -6,10 +6,12 @@ import {
   TouchableOpacity,
   ScrollView,
   ImageBackground,
+  FlatList,
+  Dimensions,
 } from "react-native";
 import styles from "./styles";
-import ProfileHeader from "../../compontents/ProfileHeader";
-import SkillerSlider from "../../compontents/SkillerSlider";
+import { useSelector } from "react-redux";
+const { width, height } = Dimensions.get("window");
 
 const topDrawerStyle = {
   position: "absolute",
@@ -18,13 +20,14 @@ const topDrawerStyle = {
   left: 12,
 };
 
-const ProfileDetail = ({ navigation, route }) => {
-  const { skillerdata } = route.params;
+const ProfileDetail = ({ navigation }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const allSkillers = useSelector((state) => state.user.skillers);
 
-  console.log("Detail page data:", skillerdata);
-  return (
-    <View style={styles.container}>
-      <ScrollView>
+  // renderitem
+  const renderitem = ({ item }) => {
+    return (
+      <View style={{ flex: 1, width }}>
         <ImageBackground
           source={require("../../assets/Images/header.jpg")}
           style={{ width: "100%" }}
@@ -40,20 +43,112 @@ const ProfileDetail = ({ navigation, route }) => {
               />
             </TouchableOpacity>
 
-            <ProfileHeader />
+            <View style={styles.topbar}>
+              <View style={styles.scrntitle}>
+                <Text style={styles.scrntitltext}>Profile</Text>
+              </View>
+              <Image
+                source={require("../../assets/Images/favrouit.png")}
+                style={styles.favico}
+              />
+              <Image
+                source={require("../../assets/Images/share.png")}
+                style={styles.sharico}
+              />
+            </View>
           </View>
         </ImageBackground>
 
-        <View style={styles.areatextbg}>
-          <Text style={styles.areatext}>Eletrician in Garsfontein</Text>
-        </View>
+        <View style={{ flex: 1 }}>
+          <ImageBackground
+            source={require("../../assets/Images/header.jpg")}
+            style={{ width: "100%", paddingBottom: 18 }}
+          >
+            <View style={styles.usrname}>
+              <Text style={styles.nametext}>{item.skiller_name}</Text>
+            </View>
 
-        <View style={styles.swpipebg}>
-          <Text style={styles.swiptext}>Swipe to see more skillers</Text>
-        </View>
+            <View style={styles.profiletopsec}>
+              <View style={styles.proviewbtn}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("ProfileDetail")}
+                >
+                  <Text style={styles.viewtext}>View</Text>
+                </TouchableOpacity>
+              </View>
 
-        <SkillerSlider />
-      </ScrollView>
+              <View style={styles.avter}>
+                <Image
+                  source={{ uri: item.profile_image }}
+                  style={styles.avaterimg}
+                />
+                <View style={styles.avateredit}>
+                  <Image
+                    source={require("../../assets/Images/wrench.png")}
+                    style={styles.avatereditimg}
+                  />
+                </View>
+              </View>
+
+              <View style={styles.ratedbtn}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("RateSkillz")}
+                >
+                  <Image
+                    source={require("../../assets/Images/star.png")}
+                    style={styles.startratd}
+                  />
+                  <Text style={styles.rateing}>3.5 Rated</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ImageBackground>
+
+          <View style={styles.areatextbg}>
+            <Text style={styles.areatext}>Eletrician in Garsfontein</Text>
+          </View>
+
+          <View style={styles.swpipebg}>
+            <Text style={styles.swiptext}>Swipe to see more skillers</Text>
+          </View>
+
+          <View style={styles.middlesection}>
+            <View style={styles.detailtext}>
+              <Text style={styles.text1}>{"Profile"}</Text>
+            </View>
+
+            <View style={styles.detailtext}>
+              <Text style={styles.text2}>{item.skiller_name}</Text>
+              <Text style={styles.text2}>{item.skiller_mobile}</Text>
+              <Text style={styles.text2}>{item.skiller_email}</Text>
+              <Text style={styles.text2}>{item.website}</Text>
+            </View>
+
+            <View style={styles.detailtext}>
+              <Text style={styles.text1}>{item.skills}</Text>
+            </View>
+
+            <View style={styles.detailtext}>
+              <Text style={styles.text2}>{item.Listskills}</Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        horizontal
+        pagingEnabled={true}
+        showsHorizontalScrollIndicator={false}
+        legacyImplementation={false}
+        data={allSkillers}
+        renderItem={(item) => renderitem(item)}
+        keyExtractor={(item, index) => index}
+        style={{ width: width, height: "100%" }}
+      />
 
       <View style={styles.bottombutn}>
         <TouchableOpacity onPress={() => navigation.navigate("Profile")}>

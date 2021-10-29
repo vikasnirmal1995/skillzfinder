@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { KeyboardAvoidingView, Platform, Alert } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  Alert,
+  SafeAreaView,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -30,6 +35,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useSelector, useDispatch } from "react-redux";
 import { userData } from "./src/redux/actions/user";
 import { Text, View } from "react-native";
+import { GETLIKEDSKILLERSLIST } from "./src/config/urls";
+import { makeReq } from "./src/utils.js/makeReq";
+import { userLikedSkillers } from "./src/redux/actions/user";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -101,6 +109,8 @@ function App() {
       setIsLoading(false);
     }
   };
+
+  const locationUser = useSelector((state) => state.user);
   useEffect(() => {
     Geolocation.getCurrentPosition(
       (position) => {
@@ -118,7 +128,21 @@ function App() {
     // setIsLoading(false);
   }, []);
 
-  const locationUser = useSelector((state) => state.user);
+  useEffect(() => {
+    if (locationUser.user !== null) {
+      const options = {
+        finder_id: locationUser.user.id,
+      };
+      makeReq(GETLIKEDSKILLERSLIST, options)
+        .then((res) => {
+          const result = res.data;
+          dispatch(userLikedSkillers(result));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [locationUser.user]);
 
   console.log("user location>>>>", locationUser);
   if (isLoading) {
@@ -133,9 +157,11 @@ function App() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={{ flex: 1 }}
     >
-      <NavigationContainer>
-        {userState.user !== null ? <MainNavigation /> : <AuthNavigation />}
-      </NavigationContainer>
+      <SafeAreaView style={{ flex: 1 }}>
+        <NavigationContainer>
+          {userState.user !== null ? <MainNavigation /> : <AuthNavigation />}
+        </NavigationContainer>
+      </SafeAreaView>
     </KeyboardAvoidingView>
   );
 }

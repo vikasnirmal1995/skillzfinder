@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   profilheader: {
-    height: hp ('32%'),
+    
   },
   middlesection: {
     width: wp ('100%'),
@@ -50,10 +50,23 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 
- 
   profiletopsec: {
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  
+  proviewbtn: {
+    width: 100,
+    height: 100,
+    backgroundColor: '#0B97FB',
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  viewtext: {
+    color: '#fff',
+    textTransform: 'uppercase',
+    fontSize: 16,
   },
 
   topbar: {
@@ -132,6 +145,7 @@ const styles = StyleSheet.create({
   startratd: {
     width: 20,
     height: 20,
+    alignSelf: 'center',
   },
 
   bottombutn: {

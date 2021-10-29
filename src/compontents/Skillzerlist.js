@@ -3,6 +3,9 @@ import { Text, View, Image, TouchableOpacity, FlatList } from "react-native";
 import styles from "../screens/ListView/styles";
 import { useNavigation } from "@react-navigation/core";
 import { useSelector } from "react-redux";
+import { LIKESKILLER } from "../config/urls";
+import { makeReq } from "../utils.js/makeReq";
+import ItemCard from "./ItemCard";
 
 // const Data = [
 //   {
@@ -170,6 +173,7 @@ import { useSelector } from "react-redux";
 
 export function Skillzerlist() {
   const getSkillersData = useSelector((state) => state.user.skillers);
+  const getMyProfile = useSelector((state) => state.user.user);
   const navigation = useNavigation();
 
   return (
@@ -177,54 +181,7 @@ export function Skillzerlist() {
       data={getSkillersData}
       keyExtractor={(item, index) => index}
       renderItem={({ item }) => (
-        <View>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("Profile", {
-                skillerData: item,
-              })
-            }
-            style={styles.chatcontact}
-          >
-            <View>
-              <Image
-                source={{ uri: item.profile_image }}
-                style={styles.review}
-              />
-            </View>
-            <View style={styles.rightview}>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Text style={styles.username}>{item.skiller_name}</Text>
-                <TouchableOpacity
-                  style={styles.favionFix}
-                  onPress={() => {
-                    alert("Hello");
-                  }}
-                >
-                  <Image
-                    source={require("../assets/Images/favrouit-bl.png")}
-                    style={styles.favicon}
-                  />
-                </TouchableOpacity>
-              </View>
-
-              <View style={styles.captionWrapper}>
-                <Text style={styles.discriptiontext}>{item.description}</Text>
-              </View>
-              <View
-                style={{ flexDirection: "row", marginTop: 7, marginLeft: 12 }}
-              >
-                <View>{item.Review}</View>
-                <Text style={styles.charhour}>{item.rating}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        </View>
+        <ItemCard item={item} navigation={navigation} />
       )}
     ></FlatList>
   );

@@ -21,3 +21,10 @@ export const userSearchedSkillers = (data) => {
     payload: data,
   };
 };
+
+export const userLikedSkillers = (data) => {
+  return {
+    type: "GET_ALL_LIKED_SKILLERS",
+    payload: data,
+  };
+};

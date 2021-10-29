@@ -2,6 +2,7 @@ const INITIAL_STATE = {
   user: null,
   location: null,
   skillers: [],
+  likedSkillers: [],
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -21,6 +22,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         skillers: action.payload,
+      };
+
+    case "GET_ALL_LIKED_SKILLERS":
+      return {
+        ...state,
+        likedSkillers: action.payload,
       };
 
     default:
