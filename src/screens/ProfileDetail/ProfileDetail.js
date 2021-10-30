@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Text,
   View,
@@ -21,8 +21,16 @@ const topDrawerStyle = {
 };
 
 const ProfileDetail = ({ navigation }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(3);
   const allSkillers = useSelector((state) => state.user.skillers);
+  const flatlistRef = useRef(null);
+
+  console.log("flatlistRef", flatlistRef.current);
+
+  const scrollChange = () => {
+    console.log("scrolled");
+    setTimeout(() => flatlistRef.current.scrollToIndex(2), 500);
+  };
 
   // renderitem
   const renderitem = ({ item }) => {
@@ -145,9 +153,12 @@ const ProfileDetail = ({ navigation }) => {
         showsHorizontalScrollIndicator={false}
         legacyImplementation={false}
         data={allSkillers}
+        ref={flatlistRef}
         renderItem={(item) => renderitem(item)}
         keyExtractor={(item, index) => index}
         style={{ width: width, height: "100%" }}
+        // onScroll={scrollChange}
+        initialScrollIndex={6}
       />
 
       <View style={styles.bottombutn}>
