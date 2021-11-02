@@ -46,6 +46,7 @@ const Login = ({ navigation }) => {
 
           makeReq(SEND_OTP, options).then((res) => {
             if (res.status === 1) {
+              alert(res.otp);
               navigation.navigate("OtpPage", {
                 otp: res.otp,
                 phone: options.phone,

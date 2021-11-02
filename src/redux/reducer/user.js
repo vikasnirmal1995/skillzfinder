@@ -30,6 +30,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
         likedSkillers: action.payload,
       };
 
+    case "LOG_OUT_SKILLER":
+      return {
+        ...state,
+        user: action.payload,
+      };
+
     default:
       return state;
   }

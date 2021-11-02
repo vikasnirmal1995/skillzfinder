@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../screens/Profile/styles";
 import { Text, View, Image, TouchableOpacity, Share } from "react-native";
 import { useNavigation } from "@react-navigation/core";
+import { useSelector } from "react-redux";
 
 const ProfileHeader = ({
   profileName,
   profileRating,
   profilePicture,
   SkillerData,
+  indx,
 }) => {
   const navigation = useNavigation();
 
@@ -69,7 +71,7 @@ const ProfileHeader = ({
         <View style={styles.proviewbtn}>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("ProfileDetail", { skillerdata: SkillerData })
+              navigation.navigate("ProfileDetail", { index: indx })
             }
           >
             <Text style={styles.viewtext}>View</Text>

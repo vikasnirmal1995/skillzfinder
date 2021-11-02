@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import styles from "./styles";
 import ProfileHeader from "../../compontents/ProfileHeader";
+import { useSelector } from "react-redux";
 
 const topDrawerStyle = {
   position: "absolute",
@@ -21,6 +22,15 @@ const topDrawerStyle = {
 
 const Profile = ({ navigation, route }) => {
   const { skillerData } = route.params;
+  const allSkillers = useSelector((state) => state.user.skillers);
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const currentIndex = allSkillers.findIndex(
+      (item) => item.skiller_id === skillerData.skiller_id
+    );
+    setIndex(currentIndex);
+    // console.log("id mil gayi bhao>>", currentIndex);
+  }, [skillerData.skiller_id]);
   console.log("skillerData", skillerData);
   return (
     <SafeAreaView style={styles.container}>
@@ -44,6 +54,7 @@ const Profile = ({ navigation, route }) => {
               profileRating={skillerData.rating}
               profileName={skillerData.skiller_name}
               SkillerData={skillerData}
+              indx={index}
             />
           </View>
         </ImageBackground>

@@ -21,6 +21,7 @@ const OtpPage = ({ route, navigation }) => {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
   const [otp_state, setotp] = useState("");
+
   console.log("OtpPage", otp);
   const storeData = async (value) => {
     try {

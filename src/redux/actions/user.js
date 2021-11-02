@@ -28,3 +28,10 @@ export const userLikedSkillers = (data) => {
     payload: data,
   };
 };
+
+export const logOutSkiller = (data) => {
+  return {
+    type: "LOG_OUT_SKILLER",
+    payload: null,
+  };
+};
