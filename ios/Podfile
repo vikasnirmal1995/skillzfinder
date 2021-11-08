@@ -13,6 +13,8 @@ target 'SkillzFinder' do
   )
 
 
+  pod 'react-native-location', :path => '../node_modules/react-native-location'
+
   target 'SkillzFinderTests' do
     inherit! :complete
     # Pods for testing

@@ -13,6 +13,7 @@ import styles from "./styles";
 import { useSelector } from "react-redux";
 const { width, height } = Dimensions.get("window");
 import Carousel from "react-native-snap-carousel";
+import Svg from "react-native-svg";
 
 const topDrawerStyle = {
   position: "absolute",
@@ -120,7 +121,30 @@ const ProfileDetail = ({ navigation, route }) => {
             </View>
 
             <View style={styles.swpipebg}>
+              {currentIndex > 0 && (
+                <TouchableOpacity
+                  style={styles.leftArrow}
+                  onPress={() => flatlistRef.current.snapToPrev(true)}
+                >
+                  <Image
+                    source={require("../../assets/Images/icons/left.png")}
+                    style={{ width: 24, height: 24 }}
+                  />
+                </TouchableOpacity>
+              )}
+
               <Text style={styles.swiptext}>Swipe to see more skillers</Text>
+              {allSkillers.length - 1 > currentIndex && (
+                <TouchableOpacity
+                  style={styles.rightArrow}
+                  onPress={() => flatlistRef.current.snapToNext(true)}
+                >
+                  <Image
+                    source={require("../../assets/Images/icons/right.png")}
+                    style={{ width: 24, height: 24 }}
+                  />
+                </TouchableOpacity>
+              )}
             </View>
 
             <View style={styles.middlesection}>
