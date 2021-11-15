@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
+  Linking,
 } from "react-native";
 import styles from "../SignupasSkiller/styles";
 import { GETUSERDATA } from "../../config/urls";
@@ -69,8 +70,10 @@ const SignupasSkiller = ({ navigation, route }) => {
         </View>
       </ScrollView>
       <View style={styles.bottombtun}>
-        <TouchableOpacity onPress={() => navigation.navigate("MyLocation")}>
-          <Text style={styles.butntext}>sign up as a skiller</Text>
+        <TouchableOpacity
+          onPress={() => Linking.openURL("https://www.google.com")}
+        >
+          <Text style={styles.butntext}>sign up as skiller</Text>
         </TouchableOpacity>
       </View>
     </View>

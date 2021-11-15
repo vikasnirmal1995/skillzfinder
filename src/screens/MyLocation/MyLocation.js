@@ -23,6 +23,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { userSearchedSkillers } from "../../redux/actions/user";
 
 import MapMarker from "../../assets/Images/icons/marker.svg";
+import Loader from "../../compontents/Loader";
 
 const topDrawerStyle = {
   position: "absolute",
@@ -37,6 +38,7 @@ const MyLocation = ({ navigation }) => {
   const [searchData, setSearchData] = useState([]);
   const [selected, setSelected] = useState("");
   const searchInputRef = useRef("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const locationUser = useSelector((state) => state.user);
   console.log("User data redux-->", locationUser.location);
@@ -51,11 +53,13 @@ const MyLocation = ({ navigation }) => {
         distance: "300",
       };
       makeReq(SEARCHSKILLERS, options).then((res) => {
-        console.log(res);
+        // console.log(res);
+        setIsLoading(true);
         if (res.status === 1) {
           dispatch(userSearchedSkillers(res.data));
           navigation.navigate("Listview");
         }
+        setIsLoading(false);
       });
     } else {
       alert("Please select skill to search");
@@ -109,6 +113,7 @@ const MyLocation = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      {isLoading && <Loader />}
       <Modal
         animationType="slide"
         transparent={true}

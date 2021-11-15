@@ -67,8 +67,7 @@ const styles = StyleSheet.create({
   viewtext: {
     color: "#fff",
     textTransform: "uppercase",
-    fontSize: 17,
-    fontFamily: "RobotoCondensed-Bold",
+    fontSize: 16,
   },
 
   topbar: {
@@ -96,7 +95,6 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
   },
-
   avter: {
     marginHorizontal: 15,
     width: 100,
@@ -128,9 +126,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   nametext: {
-    fontSize: 25,
+    fontSize: 24,
     color: "#fff",
-    fontFamily: "RobotoCondensed-Regular",
   },
   ratedbtn: {
     width: 100,
@@ -143,8 +140,7 @@ const styles = StyleSheet.create({
   rateing: {
     color: "#fff",
     textTransform: "uppercase",
-    fontSize: 17,
-    fontFamily: "RobotoCondensed-Bold",
+    fontSize: 16,
   },
   startratd: {
     width: 20,
@@ -164,7 +160,6 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
   },
-
   detailtext: {
     borderBottomColor: "#d3d3d3",
     borderBottomWidth: 1,
@@ -182,6 +177,16 @@ const styles = StyleSheet.create({
     marginLeft: 50,
     fontFamily: "RobotoCondensed-Regular",
     color: "#4B4B4B",
+  },
+  leftArrow: {
+    position: "absolute",
+    left: 10,
+    top: 10,
+  },
+  rightArrow: {
+    position: "absolute",
+    right: 10,
+    top: 10,
   },
 });
 
