@@ -199,7 +199,7 @@ const MyLocation = ({ navigation }) => {
             </View>
           </View>
 
-          <View style={[styles.middelsection, { paddingHorizontal: 16 }]}>
+          <View style={[styles.middelsection]}>
             <View style={styles.btnrow}>
               <View style={styles.locationbtn}>
                 <TouchableOpacity>
@@ -223,7 +223,7 @@ const MyLocation = ({ navigation }) => {
                 style={styles.usericon}
               />
               <Text style={styles.textinput}>
-                {selected === "" ? "I am looking for?" : selected}
+                {selected === "" ? "I'm looking for?" : selected}
               </Text>
             </TouchableOpacity>
           </View>

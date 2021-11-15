@@ -25,8 +25,9 @@ const styles = StyleSheet.create({
     // alignItems: "center",
   },
   middelsection: {
-    width: wp("90%"),
+    width: "100%",
     alignItems: "center",
+    paddingHorizontal: 20,
   },
   areatextbg: {
     backgroundColor: "#000",
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
     fontSize: 20,
+    fontFamily: "Roboto-Regular",
   },
   searchsection: {
     flexDirection: "row",
@@ -52,6 +54,9 @@ const styles = StyleSheet.create({
   textinput: {
     fontSize: 18,
     paddingHorizontal: 18,
+    paddingVertical: 12,
+    fontFamily: "Roboto-Medium",
+    color: "#10436E",
   },
   btnrow: {
     flexDirection: "row",
@@ -59,11 +64,10 @@ const styles = StyleSheet.create({
   },
   locationbtn: {
     backgroundColor: "#0B97FB",
-    alignContent: "center",
-    alignItems: "center",
     marginHorizontal: 5,
     paddingHorizontal: 30,
     borderRadius: 4,
+    width: "100%",
   },
   bottombtun: {
     backgroundColor: "#0B97FB",
@@ -73,8 +77,9 @@ const styles = StyleSheet.create({
   butntext: {
     color: "#fff",
     textAlign: "center",
-    fontSize: 15,
+    fontSize: 16,
     textTransform: "uppercase",
+    fontFamily: "Roboto-Bold",
     paddingVertical: 20,
   },
   modalInner: {
@@ -135,6 +140,7 @@ const styles = StyleSheet.create({
     elevation: 4,
     height: 45,
     padding: 10,
+    color: "#4C4C4C",
   },
   searchItem: {
     paddingVertical: 10,

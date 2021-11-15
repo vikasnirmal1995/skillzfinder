@@ -11,6 +11,7 @@ import {
   TextInput,
 } from "react-native";
 import Modelpicker from "../../compontents/Modelpicker";
+import Loader from "../../compontents/Loader";
 import ConfirmGoogleCaptcha from "react-native-google-recaptcha-v2";
 import { useSelector } from "react-redux";
 import { makeReq } from "../../utils.js/makeReq";
@@ -21,6 +22,7 @@ const baseUrl = "https://skillztrader.com";
 
 const Login = ({ navigation }) => {
   const [phone, setPhone] = useState("");
+  const [loading, setLoader] = useState(false);
   const [country, setCountry] = useState("");
   const [countryReset, setCountryReset] = useState(false);
   const captchaForm = useRef(null);
@@ -103,7 +105,7 @@ const Login = ({ navigation }) => {
             <TextInput
               value={phone}
               placeholder="Phone Number"
-              placeholderTextColor="#d1d1d1"
+              placeholderTextColor="#717475"
               style={styles.textbox}
               keyboardType="phone-pad"
               maxLength={10}

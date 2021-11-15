@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
   draertop: {
     flexDirection: 'row',
-    backgroundColor: '#BCE0FD',
+    backgroundColor: '#a7d3ff',
     paddingHorizontal: 20,
     paddingVertical: 40,
     },
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     textTransform: 'uppercase',
-    fontWeight: 'bold',
+    fontFamily: "Roboto-Bold_0",
   },
 
   itemico : {
@@ -51,14 +51,15 @@ const styles = StyleSheet.create({
   }, 
 
   avatitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#38434C',
+    fontSize: 22,
+    color: '#fff',
+    fontFamily: "RobotoCondensed-Bold_0",
   },
 
   avacaption: {
-    fontSize: 16,
-    color: '#38434C',
+    fontSize: 18,
+    color: '#fff',
+    fontFamily: "RobotoCondensed-Bold_0",
   },
 
   profiletopsec: {

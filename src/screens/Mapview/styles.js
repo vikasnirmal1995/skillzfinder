@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
     fontSize: 20,
+    fontFamily: "Roboto-Regular",
   },
   mapview: {
     width: wp("100%"),
@@ -50,9 +51,10 @@ const styles = StyleSheet.create({
   butntext: {
     color: "#fff",
     textAlign: "center",
-    fontSize: 15,
+    fontSize: 16,
     textTransform: "uppercase",
     paddingVertical: 20,
+    fontFamily: "Roboto-Bold",
   },
 
   mapbox: {

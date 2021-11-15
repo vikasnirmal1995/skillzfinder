@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     fontSize: 17,
     color: "#fff",
-    fontWeight: "bold",
+    fontFamily: "Roboto-Bold",
   },
   textbox: {
     borderWidth: 1.3,
@@ -58,11 +58,13 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     paddingHorizontal: 22,
     fontSize: 17,
+    color: "#222",
   },
   inputlabel: {
     fontSize: 18,
     marginVertical: 10,
-    color: "#717475",
+    color: "#333333",
+    fontFamily: "RobotoCondensed-Regular",
   },
 
   itemflg: {
@@ -95,8 +97,9 @@ const styles = StyleSheet.create({
   dropdown3BtnTxt: {
     color: "#717475",
     textAlign: "center",
-    fontSize: 17,
+    fontSize: 18,
     marginHorizontal: 12,
+    fontFamily: "RobotoCondensed-Regular",
   },
 
   dropdown3RowStyle: {
@@ -116,6 +119,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 17,
     marginHorizontal: 12,
+    fontFamily: "RobotoCondensed-Regular",
   },
   borderStyleBase: {
     width: 30,

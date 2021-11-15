@@ -1,45 +1,46 @@
 import React from "react";
 import { StyleSheet, Dimensions } from "react-native";
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
-
-
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   topimage: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   profilheader: {
-    height: hp ('32%'),
+    height: hp("32%"),
     paddingBottom: 40,
   },
   profilfild: {
     flex: 2,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
-  
+
   areatextbg: {
-    backgroundColor: '#000',
-    alignItems: 'center',
+    backgroundColor: "#000",
+    alignItems: "center",
     paddingVertical: 10,
   },
   areatext: {
-    color: '#fff',
-    textAlign: 'center',
+    color: "#fff",
+    textAlign: "center",
     fontSize: 20,
+    fontFamily: "RobotoCondensed-Regular",
   },
 
-  
   scrntitltext: {
     fontSize: 18,
-    color: '#fff',
+    color: "#fff",
   },
   favico: {
     height: 25,
@@ -54,14 +55,14 @@ const styles = StyleSheet.create({
   proviewbtn: {
     width: 100,
     height: 100,
-    backgroundColor: '#0B97FB',
+    backgroundColor: "#0B97FB",
     borderRadius: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   viewtext: {
-    color: '#fff',
-    textTransform: 'uppercase',
+    color: "#fff",
+    textTransform: "uppercase",
     fontSize: 16,
   },
   avter: {
@@ -70,24 +71,24 @@ const styles = StyleSheet.create({
     height: 100,
   },
   avaterimg: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
     borderWidth: 2,
-    borderColor: '#0B97FB',
+    borderColor: "#0B97FB",
     borderRadius: 100,
   },
-  
+
   ratedbtn: {
     width: 100,
     height: 100,
-    backgroundColor: '#0B97FB',
+    backgroundColor: "#0B97FB",
     borderRadius: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   rateing: {
-    color: '#fff',
-    textTransform: 'uppercase',
+    color: "#fff",
+    textTransform: "uppercase",
     fontSize: 16,
   },
   startratd: {
@@ -96,60 +97,62 @@ const styles = StyleSheet.create({
   },
 
   bottombutn: {
-    flexDirection: 'row',
-    backgroundColor: '#0B97FB',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    backgroundColor: "#0B97FB",
+    justifyContent: "space-between",
     paddingVertical: 20,
     paddingHorizontal: 28,
   },
-  
+
   backarrow: {
     width: 28,
     height: 28,
   },
 
   butntext: {
-    color: '#fff',
-    fontSize: 18,
-    textTransform: 'uppercase',
+    color: "#fff",
+    fontSize: 17,
+    textTransform: "uppercase",
+    fontFamily: "Roboto-Bold",
   },
 
   secondbutn: {
-    flexDirection: 'row',
-    backgroundColor: '#3BE7E3',
-    justifyContent: 'center',
+    flexDirection: "row",
+    backgroundColor: "#3BE7E3",
+    justifyContent: "center",
     paddingVertical: 20,
     paddingHorizontal: 28,
   },
-  
 
   bodycontent: {
-    height: hp ('68%'),
-    },
+    height: hp("68%"),
+  },
 
-  middlescetion:{
-    flexDirection: 'row',
-    marginLeft: '25%',
-  },  
+  middlescetion: {
+    flexDirection: "row",
+    marginLeft: "25%",
+  },
 
   staricon: {
     width: 37,
     height: 37,
   },
   middltitle: {
-    width: '100%',
-    alignItems: 'center',
+    width: "100%",
+    alignItems: "center",
     paddingVertical: 20,
   },
   titletext: {
-    fontSize: 22,
+    fontSize: 23,
+    fontFamily: "Roboto-Regular",
   },
   ratetext: {
     fontSize: 18,
     paddingHorizontal: 10,
     paddingVertical: 8,
-   },
-
+    fontFamily: "RobotoCondensed-Regular",
+    color: "#4A4A4A",
+  },
 });
 
 export default styles;

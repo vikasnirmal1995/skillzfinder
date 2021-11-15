@@ -51,20 +51,22 @@ const styles = StyleSheet.create({
     width: 25,
   },
   username: {
-    fontSize: 18,
+    fontSize: 20,
     lineHeight: 30,
     paddingHorizontal: 20,
-    fontWeight: "bold",
+    fontFamily: "RobotoCondensed-Bold",
     color: "#2699FB",
   },
   review: {
     width: 50,
     height: 50,
+    borderRadius: 100,
   },
   discriptiontext: {
     fontSize: 16,
     lineHeight: 20,
     paddingHorizontal: 20,
+    fontFamily: "Roboto-Regular",
   },
 
   charhour: {
@@ -84,6 +86,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
     fontSize: 20,
+    fontFamily: "Roboto-Regular",
   },
   bottombtun: {
     backgroundColor: "#0B97FB",
@@ -96,9 +99,10 @@ const styles = StyleSheet.create({
   butntext: {
     color: "#fff",
     textAlign: "center",
-    fontSize: 15,
+    fontSize: 16,
     textTransform: "uppercase",
     paddingVertical: 20,
+    fontFamily: "Roboto-Bold",
   },
 });
 

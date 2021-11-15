@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
     fontSize: 20,
+    fontFamily: "RobotoCondensed-Regular",
   },
 
   swpipebg: {
@@ -46,6 +47,8 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
     fontSize: 20,
+    textTransform: "uppercase",
+    fontFamily: "RobotoCondensed-Regular",
   },
 
   profiletopsec: {
@@ -92,7 +95,6 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
   },
-
   avter: {
     marginHorizontal: 15,
     width: 100,
@@ -164,12 +166,17 @@ const styles = StyleSheet.create({
     paddingVertical: 13,
   },
   text1: {
-    fontSize: 20,
+    fontSize: 18,
+    textTransform: "uppercase",
+    fontFamily: "RobotoCondensed-Regular",
+    color: "#4B4B4B",
   },
   text2: {
     fontSize: 16,
     lineHeight: 22,
     marginLeft: 50,
+    fontFamily: "RobotoCondensed-Regular",
+    color: "#4B4B4B",
   },
   leftArrow: {
     position: "absolute",
