@@ -70,7 +70,7 @@ const SignupasSkiller = ({ navigation, route }) => {
       </ScrollView>
       <View style={styles.bottombtun}>
         <TouchableOpacity onPress={() => navigation.navigate("MyLocation")}>
-          <Text style={styles.butntext}>sign up as skiller</Text>
+          <Text style={styles.butntext}>sign up as a skiller</Text>
         </TouchableOpacity>
       </View>
     </View>

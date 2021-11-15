@@ -94,7 +94,7 @@ const ProfileHeader = ({
               source={require("../assets/Images/star.png")}
               style={styles.startratd}
             />
-            <Text style={styles.rateing}>{profileRating} Rated</Text>
+            <Text style={styles.rateing}>{profileRating}Rated</Text>
           </TouchableOpacity>
         </View>
       </View>

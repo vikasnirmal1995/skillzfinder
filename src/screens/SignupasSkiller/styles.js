@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
     fontSize: 50,
+    fontFamily: "Roboto-Bold",
   },
   roundedbtnInner: {
     borderColor: "#FFF",
@@ -60,14 +61,16 @@ const styles = StyleSheet.create({
   Termstext: {
     color: "#4C4C4C",
     textAlign: "center",
-    fontSize: 15,
+    fontSize: 16,
     lineHeight: 22,
-    marginVertical: 24,
+    marginVertical: 40,
+    fontFamily: "RobotoCondensed-Regular",
   },
   ortext: {
     color: "#0B97FB",
     textAlign: "center",
     fontSize: 40,
+    fontFamily: "RobotoCondensed-Bold",
   },
   bottombtun: {
     backgroundColor: "#0B97FB",
@@ -77,9 +80,10 @@ const styles = StyleSheet.create({
   butntext: {
     color: "#fff",
     textAlign: "center",
-    fontSize: 17,
+    fontSize: 18,
     textTransform: "uppercase",
     paddingVertical: 20,
+    fontFamily: "RobotoCondensed-Bold",
   },
 });
 

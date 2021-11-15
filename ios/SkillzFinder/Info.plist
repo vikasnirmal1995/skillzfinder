@@ -61,5 +61,22 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Roboto-Black_0.ttf</string>
+		<string>Roboto-Bold_0.ttf</string>
+		<string>Roboto-Light_0.ttf</string>
+		<string>Roboto-Medium_0.ttf</string>
+		<string>Roboto-Regular_0.ttf</string>
+		<string>RobotoCondensed-Bold_0.ttf</string>
+		<string>RobotoCondensed-Regular_0.ttf</string>
+		<string>Roboto-Black.ttf</string>
+		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-Light.ttf</string>
+		<string>Roboto-Medium.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>RobotoCondensed-Bold.ttf</string>
+		<string>RobotoCondensed-Regular.ttf</string>
+	</array>
 </dict>
 </plist>
