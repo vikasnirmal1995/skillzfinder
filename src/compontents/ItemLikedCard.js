@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import styles from "../screens/ListView/styles";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,17 +7,15 @@ import { LIKESKILLER } from "../config/urls";
 import { userLikedSkillers } from "../redux/actions/user";
 import Loader from "../compontents/Loader";
 
-function ItemCard({ item, navigation }) {
+function ItemLikedCard({ item, navigation }) {
   const getLikedSkillersData = useSelector((state) => state.user.likedSkillers);
   const getMyProfile = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
-  // console.log("ike wale skillers", getLikedSkillersData);
-
-  const isLiked =
-    getLikedSkillersData.length > 0 &&
-    getLikedSkillersData.some((data) => data.profile_id == item.profile_id);
+  const isLiked = getLikedSkillersData.some(
+    (data) => data.skiller_id == item.skiller_id
+  );
 
   const handleFollow = (value_skiller, value_profile_id) => {
     dispatch({ type: "PAGE_LOADER", payload: true });
@@ -26,17 +24,19 @@ function ItemCard({ item, navigation }) {
       skiller_id: value_skiller,
       skiller_profile_id: value_profile_id,
     };
+    // console.log("sent liked object>>>>>>>>>>>>>>.>>>>", options);
 
     makeReq(LIKESKILLER, options).then((res) => {
-      // alert("asd");
-      console.log("object data from jhahsdsd", res);
       if (res.status === 1) {
-        dispatch(userLikedSkillers(res.data));
-        dispatch({ type: "PAGE_LOADER", payload: false });
+        if (res.is_liked === 1) {
+          dispatch(userLikedSkillers(res.data));
+        } else {
+          dispatch(userLikedSkillers(res.data));
+        }
       } else {
         dispatch(userLikedSkillers([]));
-        dispatch({ type: "PAGE_LOADER", payload: false });
       }
+      dispatch({ type: "PAGE_LOADER", payload: false });
     });
   };
   return (
@@ -91,4 +91,4 @@ function ItemCard({ item, navigation }) {
   );
 }
 
-export default ItemCard;
+export default ItemLikedCard;

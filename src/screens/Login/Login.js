@@ -29,7 +29,6 @@ const Login = ({ navigation }) => {
   const captchaFormNew = useRef(null);
 
   const userState = useSelector((state) => state.user);
-  // console.log("abhi", userState);
   const onMessage = (event) => {
     if (event && event.nativeEvent.data) {
       if (["cancel", "error", "expired"].includes(event.nativeEvent.data)) {
@@ -80,7 +79,7 @@ const Login = ({ navigation }) => {
 
   // getCountry
   const getCountry = (data) => {
-    setCountry(data.title);
+    setCountry(data.name);
     // console.log("get country data", data);
   };
 

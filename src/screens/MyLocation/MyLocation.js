@@ -54,12 +54,12 @@ const MyLocation = ({ navigation }) => {
       };
       makeReq(SEARCHSKILLERS, options).then((res) => {
         // console.log(res);
-        setIsLoading(true);
+        dispatch({ type: "PAGE_LOADER", payload: true });
         if (res.status === 1) {
           dispatch(userSearchedSkillers(res.data));
           navigation.navigate("Listview");
         }
-        setIsLoading(false);
+        dispatch({ type: "PAGE_LOADER", payload: false });
       });
     } else {
       alert("Please select skill to search");
@@ -67,6 +67,7 @@ const MyLocation = ({ navigation }) => {
   };
 
   const handleSearch = (value) => {
+    dispatch({ type: "PAGE_LOADER", payload: true });
     setSearch(value);
 
     if (value !== "") {
@@ -78,9 +79,11 @@ const MyLocation = ({ navigation }) => {
         if (res.status === 1) {
           setSearchData(res.data);
         }
+        dispatch({ type: "PAGE_LOADER", payload: false });
       });
     } else {
       setSearchData([]);
+      dispatch({ type: "PAGE_LOADER", payload: false });
     }
   };
 
@@ -113,7 +116,6 @@ const MyLocation = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {isLoading && <Loader />}
       <Modal
         animationType="slide"
         transparent={true}
@@ -184,6 +186,42 @@ const MyLocation = ({ navigation }) => {
               <MapView
                 provider={PROVIDER_GOOGLE} // remove if not using Google Maps
                 style={styles.map}
+                customMapStyle={[
+                  {
+                    featureType: "administrative",
+                    elementType: "geometry",
+                    stylers: [
+                      {
+                        visibility: "off",
+                      },
+                    ],
+                  },
+                  {
+                    featureType: "poi",
+                    stylers: [
+                      {
+                        visibility: "off",
+                      },
+                    ],
+                  },
+                  {
+                    featureType: "road",
+                    elementType: "labels.icon",
+                    stylers: [
+                      {
+                        visibility: "off",
+                      },
+                    ],
+                  },
+                  {
+                    featureType: "transit",
+                    stylers: [
+                      {
+                        visibility: "off",
+                      },
+                    ],
+                  },
+                ]}
                 region={{
                   latitude: 26.92207,
                   longitude: 75.778885,

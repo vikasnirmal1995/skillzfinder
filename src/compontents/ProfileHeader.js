@@ -2,19 +2,45 @@ import React, { useEffect, useState } from "react";
 import styles from "../screens/Profile/styles";
 import { Text, View, Image, TouchableOpacity, Share } from "react-native";
 import { useNavigation } from "@react-navigation/core";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { makeReq } from "../utils.js/makeReq";
+import { LIKESKILLER } from "../config/urls";
+import { userLikedSkillers } from "../redux/actions/user";
 
 const ProfileHeader = ({
   profileName,
   profileRating,
   profilePicture,
   SkillerData,
+  skillerLiked,
   indx,
 }) => {
   const navigation = useNavigation();
-
+  const getMyProfile = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
   const userLike = () => {
-    alert("hello");
+    dispatch({ type: "PAGE_LOADER", payload: true });
+    const options = {
+      finder_id: getMyProfile.id,
+      skiller_id: SkillerData.skiller_id,
+      skiller_profile_id: SkillerData.profile_id,
+    };
+
+    makeReq(LIKESKILLER, options)
+      .then((res) => {
+        console.log("log options", res);
+        if (res.status === 1) {
+          dispatch(userLikedSkillers(res.data));
+          dispatch({ type: "PAGE_LOADER", payload: false });
+        } else {
+          dispatch(userLikedSkillers([]));
+          dispatch({ type: "PAGE_LOADER", payload: false });
+        }
+      })
+      .catch((err) => {
+        dispatch(userLikedSkillers([]));
+        dispatch({ type: "PAGE_LOADER", payload: false });
+      });
   };
 
   const share = async (value) => {
@@ -47,10 +73,17 @@ const ProfileHeader = ({
           style={[styles.favico, { marginRight: 20 }]}
           onPress={() => userLike()}
         >
-          <Image
-            source={require("../assets/Images/favrouit.png")}
-            style={styles.favico}
-          />
+          {skillerLiked ? (
+            <Image
+              source={require("../assets/Images/fillfav.png")}
+              style={styles.favico}
+            />
+          ) : (
+            <Image
+              source={require("../assets/Images/favrouit-bl.png")}
+              style={styles.favico}
+            />
+          )}
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => share("Abhi Jhalani")}
@@ -89,7 +122,17 @@ const ProfileHeader = ({
         </View>
 
         <View style={styles.ratedbtn}>
-          <TouchableOpacity onPress={() => navigation.navigate("RateSkillz")}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("RateSkillz", {
+                profileName,
+                profileRating,
+                profilePicture,
+                SkillerData,
+                skillerLiked,
+              })
+            }
+          >
             <Image
               source={require("../assets/Images/star.png")}
               style={styles.startratd}

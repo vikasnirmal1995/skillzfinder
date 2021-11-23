@@ -15,12 +15,14 @@ import { GETUSERDATA } from "../../config/urls";
 import { makeReq } from "../../utils.js/makeReq";
 import { userData } from "../../redux/actions/user";
 import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../compontents/Loader";
 
 const OtpPage = ({ route, navigation }) => {
   const { otp, phone, country_code } = route.params;
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
   const [otp_state, setotp] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   console.log("OtpPage", otp);
   const storeData = async (value) => {

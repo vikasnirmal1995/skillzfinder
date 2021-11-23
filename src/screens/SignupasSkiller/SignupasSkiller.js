@@ -19,7 +19,7 @@ const SignupasSkiller = ({ navigation, route }) => {
   const { phone, country_code } = route.params;
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
-
+  console.log("sign up skiller", userState);
   const storeData = async (value) => {
     try {
       await AsyncStorage.setItem("skilzUser", JSON.stringify(value));
@@ -32,6 +32,8 @@ const SignupasSkiller = ({ navigation, route }) => {
     const options = {
       phone: phone,
       country_code: country_code,
+      latitude: userState.location.latitude,
+      longitude: userState.location.longitude,
     };
     makeReq(GETUSERDATA, options).then((res) => {
       console.log(res);

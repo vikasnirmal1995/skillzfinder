@@ -12,7 +12,7 @@ const Loader = () => {
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
-        <ActivityIndicator size={40} color="#0B97FB" />
+        <ActivityIndicator size={40} color="#ffffff" />
         <Text style={styles.text}>Loading...</Text>
       </View>
     </View>
@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     top: 0,
-    zIndex: 999,
+    zIndex: 999999,
     elevation: 999,
   },
   inner: {
     width: width - 40,
     height: 200,
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     borderRadius: 10,
     display: "flex",
     flexDirection: "column",
@@ -44,8 +44,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontSize: 15,
+    fontSize: 16,
     marginTop: 10,
+    color: "#ffffff",
   },
 });
 

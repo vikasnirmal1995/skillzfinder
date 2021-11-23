@@ -58,6 +58,42 @@ const Mapview = ({ navigation }) => {
                 provider={PROVIDER_GOOGLE} // remove if not using Google Maps
                 style={styles.map}
                 zoomEnabled={true}
+                customMapStyle={[
+                  {
+                    featureType: "administrative",
+                    elementType: "geometry",
+                    stylers: [
+                      {
+                        visibility: "off",
+                      },
+                    ],
+                  },
+                  {
+                    featureType: "poi",
+                    stylers: [
+                      {
+                        visibility: "off",
+                      },
+                    ],
+                  },
+                  {
+                    featureType: "road",
+                    elementType: "labels.icon",
+                    stylers: [
+                      {
+                        visibility: "off",
+                      },
+                    ],
+                  },
+                  {
+                    featureType: "transit",
+                    stylers: [
+                      {
+                        visibility: "off",
+                      },
+                    ],
+                  },
+                ]}
                 region={{
                   latitude: -25.798484,
                   longitude: 28.331165,

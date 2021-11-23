@@ -1,26 +1,25 @@
-import React from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import React from "react";
+import { StyleSheet, Dimensions } from "react-native";
 
-var width = Dimensions.get('window').width;
-var height = Dimensions.get('window').height;
+var width = Dimensions.get("window").width;
+var height = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
-  
- logtop: {
+  logtop: {
     width: width,
   },
 
   logtopimg: {
-    width: '100%',
-    height: 200,  
+    width: "100%",
+    height: 200,
   },
 
   draertop: {
-    flexDirection: 'row',
-    backgroundColor: '#a7d3ff',
+    flexDirection: "row",
+    backgroundColor: "#a7d3ff",
     paddingHorizontal: 20,
     paddingVertical: 40,
-    },
+  },
 
   drwerbot: {
     paddingHorizontal: 12,
@@ -28,60 +27,60 @@ const styles = StyleSheet.create({
   },
 
   drawitem: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    textTransform: 'uppercase',
-    fontFamily: "Roboto-Bold_0",
+    textTransform: "uppercase",
+    fontFamily: "Roboto-Bold",
   },
 
-  itemico : {
+  itemico: {
     width: 30,
     height: 30,
   },
-  
+
   avater: {
     width: 60,
     height: 60,
     borderRadius: 100,
   },
-  
+
   avainfo: {
     marginTop: 7,
-    marginLeft:12,
-  }, 
+    marginLeft: 12,
+  },
 
   avatitle: {
     fontSize: 22,
-    color: '#fff',
-    fontFamily: "RobotoCondensed-Bold_0",
+    color: "#fff",
+    fontFamily: "RobotoCondensed-Bold",
   },
 
   avacaption: {
     fontSize: 18,
-    color: '#fff',
-    fontFamily: "RobotoCondensed-Bold_0",
+    color: "#fff",
+    fontFamily: "RobotoCondensed-Bold",
   },
 
   profiletopsec: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
   },
-  
+
   topbar: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 20,
     paddingVertical: 10,
   },
   scrntitle: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     paddingLeft: 60,
   },
-  
+
   scrntitltext: {
     fontSize: 18,
-    color: '#fff',
+    color: "#fff",
   },
   favico: {
     height: 25,
@@ -96,14 +95,14 @@ const styles = StyleSheet.create({
   proviewbtn: {
     width: 100,
     height: 100,
-    backgroundColor: '#0B97FB',
+    backgroundColor: "#0B97FB",
     borderRadius: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   viewtext: {
-    color: '#fff',
-    textTransform: 'uppercase',
+    color: "#fff",
+    textTransform: "uppercase",
     fontSize: 16,
   },
   avter: {
@@ -112,20 +111,20 @@ const styles = StyleSheet.create({
     height: 100,
   },
   avaterimg: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
     borderWidth: 2,
-    borderColor: '#0B97FB',
+    borderColor: "#0B97FB",
     borderRadius: 100,
   },
   avateredit: {
     width: 30,
     height: 30,
-    backgroundColor: '#0B97FB',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#0B97FB",
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 100,
-    position: 'absolute',
+    position: "absolute",
     right: 0,
   },
   avatereditimg: {
@@ -133,25 +132,25 @@ const styles = StyleSheet.create({
     height: 20,
   },
   usrname: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingVertical: 20,
   },
   nametext: {
     fontSize: 24,
-    color: '#fff',
+    color: "#fff",
   },
   ratedbtn: {
     width: 100,
     height: 100,
-    backgroundColor: '#0B97FB',
+    backgroundColor: "#0B97FB",
     borderRadius: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   rateing: {
-    color: '#fff',
-    textTransform: 'uppercase',
-    fontSize: 16,   
+    color: "#fff",
+    textTransform: "uppercase",
+    fontSize: 16,
   },
   startratd: {
     width: 20,

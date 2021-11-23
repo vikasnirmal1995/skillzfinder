@@ -11,6 +11,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Geolocation from "@react-native-community/geolocation";
 import { userLocationUpdate } from "./src/redux/actions/user";
+import { NetworkInfo } from "react-native-network-info";
 
 import Splash from "./src/screens/Splash/Splash";
 import { DrawerContent } from "./src/compontents/DrawerContent";
@@ -128,7 +129,7 @@ function App() {
           if (granted) {
             RNLocation.subscribeToLocationUpdates((locations) => {
               dispatch(userLocationUpdate(locations[locations.length - 1]));
-              // console.log("initialPosition ?????", locations);
+              console.log("initialPosition ?????", locations);
             });
           }
         })
@@ -160,7 +161,13 @@ function App() {
           console.log(err);
         });
     }
+
+    NetworkInfo.getIPAddress().then((ipAddress) => {
+      console.log("ipAddress", ipAddress);
+    });
   }, [locationUser.user]);
+
+  const pageLoader = useSelector((state) => state.user.isPageLoader);
 
   console.log("user location>>>>", locationUser);
   if (isLoading) {
@@ -172,6 +179,7 @@ function App() {
       style={{ flex: 1 }}
     >
       <SafeAreaView style={{ flex: 1 }}>
+        {pageLoader && <Loader />}
         <NavigationContainer>
           {userState.user !== null ? <MainNavigation /> : <AuthNavigation />}
         </NavigationContainer>

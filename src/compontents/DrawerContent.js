@@ -18,9 +18,9 @@ export function DrawerContent(props) {
         <View>
           <TouchableOpacity
             style={styles.draertop}
-            onPress={() => {
-              props.navigation.navigate("Profile");
-            }}
+            // onPress={() => {
+            //   props.navigation.navigate("Profile");
+            // }}
           >
             <Image
               source={require("../assets/Images/chatuserico.png")}

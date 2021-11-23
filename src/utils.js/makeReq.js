@@ -21,7 +21,7 @@ export async function apiReq(
       .then((result) => {
         const { data } = result;
 
-        if (data.status === 0) {
+        if (data.success === 0) {
           return rej(data);
         }
 

@@ -10,3 +10,4 @@ export const SEARCHSKILLERS = getApiUrl("/search_skillers_geo");
 export const LIKESKILLER = getApiUrl("/SkillerLike");
 export const GETLIKEDSKILLERSLIST = getApiUrl("/allLikedSkillers");
 export const GETCOUNTRYLISTING = getApiUrl("/getAllCountries");
+export const TraderRating = getApiUrl("/rating");

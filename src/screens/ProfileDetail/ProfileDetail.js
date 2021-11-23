@@ -12,7 +12,7 @@ import {
 import styles from "./styles";
 import { useSelector } from "react-redux";
 const { width, height } = Dimensions.get("window");
-import Carousel from "react-native-snap-carousel";
+import Carousel, { Pagination } from "react-native-snap-carousel";
 import Svg from "react-native-svg";
 
 const topDrawerStyle = {
@@ -110,14 +110,14 @@ const ProfileDetail = ({ navigation, route }) => {
                       source={require("../../assets/Images/star.png")}
                       style={styles.startratd}
                     />
-                    <Text style={styles.rateing}>3.5 Rated</Text>
+                    <Text style={styles.rateing}>4.5 Rated</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             </ImageBackground>
 
             <View style={styles.areatextbg}>
-              <Text style={styles.areatext}>Eletrician in Garsfontein</Text>
+              <Text style={styles.areatext}>{item.skills} in Garsfontein</Text>
             </View>
 
             <View style={styles.swpipebg}>
@@ -186,7 +186,14 @@ const ProfileDetail = ({ navigation, route }) => {
         itemWidth={width}
         currentIndex={currentIndex}
         currentScrollPosition={currentIndex}
+        lockScrollWhileSnapping={true}
         onSnapToItem={(index) => setCurrentIndex(index)}
+      />
+      <Pagination
+        dotsLength={3}
+        dotColor={"rgba(255, 255, 255, 0.92)"}
+        inactiveDotOpacity={0.4}
+        inactiveDotScale={0.6}
       />
 
       <View style={styles.bottombutn}>

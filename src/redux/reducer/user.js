@@ -3,6 +3,7 @@ const INITIAL_STATE = {
   location: null,
   skillers: [],
   likedSkillers: [],
+  isPageLoader: false,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -34,6 +35,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         user: action.payload,
+      };
+    case "PAGE_LOADER":
+      return {
+        ...state,
+        isPageLoader: action.payload,
       };
 
     default:

@@ -24,6 +24,11 @@ const Profile = ({ navigation, route }) => {
   const { skillerData } = route.params;
   const allSkillers = useSelector((state) => state.user.skillers);
   const [index, setIndex] = useState(0);
+  const getLikedSkillersData = useSelector((state) => state.user.likedSkillers);
+  const isLiked = getLikedSkillersData.some(
+    (data) => data.profile_id == skillerData.profile_id
+  );
+
   useEffect(() => {
     const currentIndex = allSkillers.findIndex(
       (item) => item.skiller_id === skillerData.skiller_id
@@ -54,6 +59,7 @@ const Profile = ({ navigation, route }) => {
               profileRating={skillerData.rating}
               profileName={skillerData.skiller_name}
               SkillerData={skillerData}
+              skillerLiked={isLiked}
               indx={index}
             />
           </View>
