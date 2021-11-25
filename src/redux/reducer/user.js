@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   user: null,
   location: null,
+  ipaddress: null,
   skillers: [],
   likedSkillers: [],
   isPageLoader: false,
@@ -23,6 +24,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         skillers: action.payload,
+      };
+
+    case "GET_IP_ADDRESS":
+      return {
+        ...state,
+        ipaddress: action.payload,
       };
 
     case "GET_ALL_LIKED_SKILLERS":

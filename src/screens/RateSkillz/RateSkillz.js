@@ -21,16 +21,22 @@ const topDrawerStyle = {
   left: 12,
 };
 
-const RateSkillz = ({
-  profileName,
-  profileRating,
-  profilePicture,
-  SkillerData,
-  skillerLiked,
-}) => {
+const RateSkillz = (props) => {
+  const {
+    profileName,
+    profileRating,
+    profilePicture,
+    SkillerData,
+    skillerLiked,
+  } = props.route.params;
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [rating, setRating] = useState(0);
+  const getMyProfile = useSelector((state) => state.user);
+  const getLikedSkillersData = useSelector((state) => state.user.likedSkillers);
+  const isLiked = getLikedSkillersData.some(
+    (data) => data.profile_id == SkillerData.profile_id
+  );
   const handleRating = () => {
     if (rating === 0) {
       alert("Please rate the skiller");
@@ -38,10 +44,10 @@ const RateSkillz = ({
       dispatch({ type: "PAGE_LOADER", payload: true });
       const options = {
         action: "add",
-        ip_address: "172.16.17.260",
+        ip_address: getMyProfile.ipaddress,
         profile_id: 118,
         rate: rating,
-        finder_id: 28,
+        finder_id: getMyProfile.user.id,
       };
       console.log("sent rating object>>>>>>>>>>>>>>.>>>>", options);
 
@@ -51,6 +57,8 @@ const RateSkillz = ({
       });
     }
   };
+
+  console.log("rating page skiller id", profileName);
 
   return (
     <View style={styles.container}>
@@ -70,7 +78,13 @@ const RateSkillz = ({
               />
             </TouchableOpacity>
 
-            <ProfileHeader />
+            <ProfileHeader
+              profilePicture={SkillerData.profile_image}
+              profileRating={SkillerData.rating}
+              profileName={SkillerData.skiller_name}
+              SkillerData={SkillerData}
+              skillerLiked={isLiked}
+            />
           </View>
         </ImageBackground>
 

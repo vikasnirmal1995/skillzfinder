@@ -22,6 +22,7 @@ const topDrawerStyle = {
 
 const Mapview = ({ navigation }) => {
   const getSkillersData = useSelector((state) => state.user.skillers);
+  const locationUser = useSelector((state) => state.user.location);
   const [radius, setRadius] = useState(500);
   const [latLng, setLatLng] = useState({
     latitudeDelta: 0.015,
@@ -95,15 +96,20 @@ const Mapview = ({ navigation }) => {
                   },
                 ]}
                 region={{
-                  latitude: -25.798484,
-                  longitude: 28.331165,
+                  latitude: locationUser.latitude,
+                  longitude: locationUser.longitude,
                   latitudeDelta: latLng.latitudeDelta,
                   longitudeDelta: latLng.longitudeDelta,
                 }}
               >
                 <MapView.Circle
-                  key={(-25.798484 + 28.331165).toString()}
-                  center={{ latitude: -25.798484, longitude: 28.331165 }}
+                  key={(
+                    locationUser.latitude + locationUser.longitude
+                  ).toString()}
+                  center={{
+                    latitude: locationUser.latitude,
+                    longitude: locationUser.longitude,
+                  }}
                   radius={radius}
                   strokeWidth={3}
                   strokeColor={"transparent"}
@@ -111,8 +117,8 @@ const Mapview = ({ navigation }) => {
                 ></MapView.Circle>
                 <Marker
                   coordinate={{
-                    latitude: -25.798484,
-                    longitude: 28.331165,
+                    latitude: locationUser.latitude,
+                    longitude: locationUser.longitude,
                   }}
                   title={"My Location"}
                 >

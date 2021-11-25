@@ -39,6 +39,18 @@ function ItemLikedCard({ item, navigation }) {
       dispatch({ type: "PAGE_LOADER", payload: false });
     });
   };
+
+  const imgPath = (value) => {
+    if (value == 0) {
+      return (
+        <Image
+          source={require("../assets/reviews/0.png")}
+          style={{ height: 22, width: 120 }}
+        />
+      );
+    }
+  };
+  // "../assets/reviews/" + item.rating.toString() + ".png";
   return (
     <View>
       <TouchableOpacity
@@ -83,6 +95,8 @@ function ItemLikedCard({ item, navigation }) {
           </View>
           <View style={{ flexDirection: "row", marginTop: 7, marginLeft: 12 }}>
             <View>{item.Review}</View>
+
+            {imgPath(item.rating)}
             <Text style={styles.charhour}>{item.rating}</Text>
           </View>
         </View>

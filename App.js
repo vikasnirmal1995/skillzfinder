@@ -40,6 +40,7 @@ import { Text, View } from "react-native";
 import { GETLIKEDSKILLERSLIST } from "./src/config/urls";
 import { makeReq } from "./src/utils.js/makeReq";
 import { userLikedSkillers } from "./src/redux/actions/user";
+import { saveIpAddress } from "./src/redux/actions/user";
 import Loader from "./src/compontents/Loader";
 
 const Stack = createStackNavigator();
@@ -163,6 +164,7 @@ function App() {
     }
 
     NetworkInfo.getIPAddress().then((ipAddress) => {
+      dispatch(saveIpAddress(ipAddress));
       console.log("ipAddress", ipAddress);
     });
   }, [locationUser.user]);

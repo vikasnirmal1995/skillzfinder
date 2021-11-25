@@ -12,6 +12,8 @@ export function DrawerContent(props) {
     AsyncStorage.clear();
     dispatch(logOutSkiller(null));
   };
+  const locationUser = useSelector((state) => state.user.user);
+
   return (
     <View style={{ flex: 1, backgroundColor: "#0B97FB" }}>
       <DrawerContentScrollView {...props}>
@@ -27,8 +29,8 @@ export function DrawerContent(props) {
               style={styles.avater}
             />
             <View style={styles.avainfo}>
-              <Text style={styles.avatitle}>Jhon Doe</Text>
-              <Text style={styles.avacaption}>San Franciso, CA</Text>
+              <Text style={styles.avatitle}>{locationUser.phone}</Text>
+              <Text style={styles.avacaption}>{locationUser.country_code}</Text>
             </View>
           </TouchableOpacity>
         </View>

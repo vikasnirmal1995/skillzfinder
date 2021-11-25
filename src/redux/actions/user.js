@@ -35,3 +35,10 @@ export const logOutSkiller = (data) => {
     payload: null,
   };
 };
+
+export const saveIpAddress = (data) => {
+  return {
+    type: "GET_IP_ADDRESS",
+    payload: data,
+  };
+};

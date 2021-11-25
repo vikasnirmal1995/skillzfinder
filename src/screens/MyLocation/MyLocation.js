@@ -21,8 +21,6 @@ import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
 import { useSelector, useDispatch } from "react-redux";
 import { userSearchedSkillers } from "../../redux/actions/user";
-
-import MapMarker from "../../assets/Images/icons/marker.svg";
 import Loader from "../../compontents/Loader";
 
 const topDrawerStyle = {
@@ -48,16 +46,18 @@ const MyLocation = ({ navigation }) => {
     if (selected !== "") {
       const options = {
         skills: selected,
-        latitude: "-25.798484",
-        longitude: "28.331165",
+        latitude: locationUser.location.latitude,
+        longitude: locationUser.location.longitude,
         distance: "300",
       };
       makeReq(SEARCHSKILLERS, options).then((res) => {
-        // console.log(res);
+        console.log("searched skillers--", res);
         dispatch({ type: "PAGE_LOADER", payload: true });
         if (res.status === 1) {
           dispatch(userSearchedSkillers(res.data));
           navigation.navigate("Listview");
+        } else {
+          alert("No Skiller found in your area");
         }
         dispatch({ type: "PAGE_LOADER", payload: false });
       });
@@ -180,92 +180,97 @@ const MyLocation = ({ navigation }) => {
           <Text style={styles.areatext}>Search for Skillerz in your Area</Text>
         </View>
 
-        <View style={styles.bodysection}>
-          <View style={styles.mapWrapper}>
-            <View style={styles.mapContainer}>
-              <MapView
-                provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-                style={styles.map}
-                customMapStyle={[
-                  {
-                    featureType: "administrative",
-                    elementType: "geometry",
-                    stylers: [
-                      {
-                        visibility: "off",
-                      },
-                    ],
-                  },
-                  {
-                    featureType: "poi",
-                    stylers: [
-                      {
-                        visibility: "off",
-                      },
-                    ],
-                  },
-                  {
-                    featureType: "road",
-                    elementType: "labels.icon",
-                    stylers: [
-                      {
-                        visibility: "off",
-                      },
-                    ],
-                  },
-                  {
-                    featureType: "transit",
-                    stylers: [
-                      {
-                        visibility: "off",
-                      },
-                    ],
-                  },
-                ]}
-                region={{
-                  latitude: 26.92207,
-                  longitude: 75.778885,
-                  latitudeDelta: 0.015,
-                  longitudeDelta: 0.0121,
-                }}
-              >
-                <Marker
-                  coordinate={{ latitude: 26.92207, longitude: 75.778885 }}
-                  // image={{ uri: "custom_pin" }}
-                />
-              </MapView>
-            </View>
-          </View>
-
-          <View style={[styles.middelsection]}>
-            <View style={styles.btnrow}>
-              <View style={styles.locationbtn}>
-                <TouchableOpacity>
-                  <Text style={styles.butntext}>My Location</Text>
-                </TouchableOpacity>
+        {locationUser.location !== null && (
+          <View style={styles.bodysection}>
+            <View style={styles.mapWrapper}>
+              <View style={styles.mapContainer}>
+                <MapView
+                  provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+                  style={styles.map}
+                  customMapStyle={[
+                    {
+                      featureType: "administrative",
+                      elementType: "geometry",
+                      stylers: [
+                        {
+                          visibility: "off",
+                        },
+                      ],
+                    },
+                    {
+                      featureType: "poi",
+                      stylers: [
+                        {
+                          visibility: "off",
+                        },
+                      ],
+                    },
+                    {
+                      featureType: "road",
+                      elementType: "labels.icon",
+                      stylers: [
+                        {
+                          visibility: "off",
+                        },
+                      ],
+                    },
+                    {
+                      featureType: "transit",
+                      stylers: [
+                        {
+                          visibility: "off",
+                        },
+                      ],
+                    },
+                  ]}
+                  region={{
+                    latitude: locationUser.location.latitude,
+                    longitude: locationUser.location.longitude,
+                    latitudeDelta: 0.015,
+                    longitudeDelta: 0.0121,
+                  }}
+                >
+                  <Marker
+                    coordinate={{
+                      latitude: locationUser.location.latitude,
+                      longitude: locationUser.location.longitude,
+                    }}
+                    // image={{ uri: "custom_pin" }}
+                  />
+                </MapView>
               </View>
-              {/* <View style={styles.locationbtn}>
+            </View>
+
+            <View style={[styles.middelsection]}>
+              <View style={styles.btnrow}>
+                <View style={styles.locationbtn}>
+                  <TouchableOpacity>
+                    <Text style={styles.butntext}>My Location</Text>
+                  </TouchableOpacity>
+                </View>
+                {/* <View style={styles.locationbtn}>
                 <TouchableOpacity>
                   <Text style={styles.butntext}>Other Location</Text>
                 </TouchableOpacity>
               </View> */}
+              </View>
+              <TouchableOpacity
+                onPress={() => {
+                  setModalVisible(true);
+                }}
+                style={styles.searchsection}
+              >
+                <Image
+                  source={require("../../assets/Images/user.png")}
+                  style={styles.usericon}
+                />
+                <Text style={styles.textinput}>
+                  {selected === "" ? "I'm looking for?" : selected}
+                </Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              onPress={() => {
-                setModalVisible(true);
-              }}
-              style={styles.searchsection}
-            >
-              <Image
-                source={require("../../assets/Images/user.png")}
-                style={styles.usericon}
-              />
-              <Text style={styles.textinput}>
-                {selected === "" ? "I'm looking for?" : selected}
-              </Text>
-            </TouchableOpacity>
           </View>
-        </View>
+        )}
       </View>
 
       <View style={styles.bottombtun}>
